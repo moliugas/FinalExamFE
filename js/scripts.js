@@ -45,14 +45,14 @@ window.addEventListener('DOMContentLoaded', event => {
 
     // My stuff
 
-    const password = document.getElementById("password-register"),
-        confirm_password = document.getElementById("password-register-confirm"),
-        login_password = document.getElementById("login-pass"),
-        name = document.getElementById("login-user"),
-        reg_name = document.getElementById("name-register");
-    const input = document.getElementById("selectAvatar");
-    const regSubmit = document.getElementById("form-register");
-    const loginSubmit = document.getElementById("form-login");
+    const password = document.querySelector("#password-register"),
+        confirm_password = document.querySelector("#password-register-confirm"),
+        login_password = document.querySelector("#login-pass"),
+        name = document.querySelector("#login-user"),
+        reg_name = document.querySelector("#name-register");
+    const input = document.querySelector("#selectAvatar");
+    const regSubmit = document.querySelector("#form-register");
+    const loginSubmit = document.querySelector("#form-login");
     const convertBase64 = (file) => {
         return new Promise((resolve, reject) => {
             const fileReader = new FileReader();
@@ -67,6 +67,7 @@ window.addEventListener('DOMContentLoaded', event => {
             };
         });
     };
+
     let image64;
 
     const uploadImage = async (event) => {
@@ -108,9 +109,9 @@ window.addEventListener('DOMContentLoaded', event => {
             },
         }).then((res) => {
             if (res.ok) {
-                res.text().then((token) => {
+                res.text().then(token => {
                     localStorage.token = token;
-                    window.location.assign("edit.html");
+                    location.assign("edit.html");
                 })
             } else {
                 alert("Failed.");
@@ -139,9 +140,12 @@ window.addEventListener('DOMContentLoaded', event => {
             },
         }).then((res) => {
             if (res.ok) {
-                window.location.replace("edit.html");
+                res.text().then(token => {
+                    localStorage.token = token;
+                    location.assign("edit.html");
+                })
             } else {
-                alert("Something went wrong, try again.");
+                alert("User exists.");
             }
         });
 

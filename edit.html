@@ -16,6 +16,11 @@
           type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+    <link href="vendor.css" rel="stylesheet">
 </head>
 <body id="page-top">
     <!-- Navigation-->
@@ -33,8 +38,8 @@
                 </select>
             </div>
             <ul class="navbar-nav ms-auto">
-                 <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded" id="logout" href="#">Logout</a>
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded" id="logout" href="">Logout</a>
                 </li>
             </ul>
         </div>
@@ -51,9 +56,183 @@
                 <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                 <div class="divider-custom-line"></div>
             </div>
-            <div class="container px-5 my-5">
-                <form id="personForm" data-sb-form-api-token="API_TOKEN">
+            <div class="row justify-content-center">
+
+
+                <div class="container jf-form">
+                    <form id="personForm" class="container jf-form" data-licenseKey="" name="jqueryform-075313" action='#' method='post' enctype='multipart/form-data' novalidate autocomplete="on">
+                        <div id="profilePicture"><br /></div>
+                        <br />
+                        <input type="hidden" name="method" value="validateForm">
+                        <input type="hidden" id="serverValidationFields" name="serverValidationFields" value="">
+
+
+
+                        <div class="form-group f1 required" data-fid="f1">
+                            <label class="control-label sr-only" for="f1"></label>
+
+                            <div class="input-group">
+                                <span class="input-group-addon left"><i class="glyphicon glyphicon-user"></i> </span>
+                                <input type="text" class="form-control" id="name" name="f1" value="" placeholder="Name"
+                                       data-rule-required="true" />
+                            </div>
+
+
+                        </div>
+
+
+
+
+                        <div class="form-group f4 required" data-fid="f4">
+                            <label class="control-label sr-only" for="f4"></label>
+
+                            <div class="input-group">
+                                <span class="input-group-addon left"><i class="glyphicon glyphicon-user"></i> </span>
+                                <input type="text" class="form-control" id="lastname" name="f4" value="" placeholder="Last Name"
+                                       data-rule-required="true" />
+                            </div>
+
+
+                        </div>
+
+
+
+
+                        <div class="form-group f5 required" data-fid="f5">
+                            <label class="control-label sr-only" for="f5"></label>
+
+
+                            <input type="text" class="form-control " id="personalCode" name="f5" value="" placeholder="Personal Code"
+                                   data-rule-number="true"
+                                   data-rule-required="true" />
+
+
+                        </div>
+
+
+
+
+                        <div class="form-group f6 " data-fid="f6">
+                            <label class="control-label sr-only" for="f6"></label>
+
+                            <div class="input-group">
+                                <span class="input-group-addon left"><i class="glyphicon glyphicon-earphone"></i> </span>
+                                <input type="tel" class="form-control" id="phoneNumber" name="f6" value="" placeholder="+xxx-xxx-xxxxx"
+                                       data-rule-pattern="[+]*[0-9]{0,3}[ -.]*[0-9]{3,4}[ -.]*[0-9]{3,4}[ -.]*[0-9]{4}" data-msg-pattern="Invalid phone number" />
+                            </div>
+
+
+                        </div>
+
+
+
+
+                        <div class="form-group f2 required" data-fid="f2">
+                            <label class="control-label sr-only" for="f2"></label>
+
+                            <div class="input-group">
+                                <span class="input-group-addon left"><i class="glyphicon glyphicon-envelope"></i> </span>
+                                <input type="email" class="form-control" id="email" name="f2" value="" placeholder="Email"
+                                       data-rule-email="true"
+                                       data-rule-required="true" />
+                            </div>
+
+                        </div>
+
+
+
+
+                        <div class="form-group f7 " data-fid="f7">
+                            <label class="control-label" for="f7">Profile picture</label>
+
+                            <input type="file" class="form-control" id="selectAvatar" name="f7" value="" data-showUpload="false" data-showZoom="false" />
+
+                        </div>
+
+
+
+
+                        <div class="form-group f8 " data-fid="f8">
+                            <label class="control-label sr-only" for="f8"></label>
+
+
+
+                        </div>
+
+
+
+
+                        <div class="form-group gaddress f9 required" data-fid="f9">
+                            <label class="control-label sr-only"></label>
+
+                            <div class="form-group addressLine1">
+                                <label class="control-label sr-only" for="f9_addressLine1">Address Line1</label>
+                                <input type="text" class="form-control gaddress-autocomplete" data-gaddress-types="street_number route" data-gaddress-name="long_name" id="f9_addressLine1" name="f9_addressLine1" value="" aria-describedby="f9_addressLine1-help-block" placeholder="Street Name"
+                                       data-rule-required="true" data-msg-required="This field is required." />
+                                <p id="f9_addressLine1-help-block" class="description sr-only">Street address, P.O. box, company name, c/o</p>
+                            </div>
+
+
+                            <div class="form-group city">
+                                <label class="control-label sr-only" for="f9_city">City</label>
+                                <input type="text" class="form-control" data-gaddress-types="locality" data-gaddress-name="long_name" id="f9_city" name="f9_city" value="" aria-describedby="f9_city-help-block" placeholder="City"
+                                       data-rule-required="true" data-msg-required="This field is required." />
+                                <p id="f9_city-help-block" class="description sr-only">City</p>
+                            </div>
+
+                            <div class="form-group state">
+                                <label class="control-label sr-only" for="f9_state">State / Province / Region</label>
+                                <input type="text" class="form-control" data-gaddress-types="street_address " data-gaddress-name="long_name" id="f9_state" name="f9_state" value="" aria-describedby="f9_state-help-block" placeholder="Building"
+                                       data-rule-required="true" data-msg-required="This field is required." />
+                                <p id="f9_state-help-block" class="description sr-only">State / Province / Region</p>
+                            </div>
+
+                            <div class="form-group postalCode">
+                                <label class="control-label sr-only" for="f9_postalCode">Postal / Zip Code</label>
+                                <input type="text" class="form-control" data-gaddress-types="street_number" data-gaddress-name="long_name" id="f9_postalCode" name="f9_postalCode" value="" aria-describedby="f9_postalCode-help-block" placeholder="Apartment"
+                                       data-rule-required="false" data-msg-required="This field is required." />
+                                <p id="f9_postalCode-help-block" class="description sr-only">Postal / Zip Code</p>
+                            </div>
+
+
+                            <div class='mq-indicator'></div>
+
+                        </div>
+
+
+
+                        <div class="form-group submit f0 " data-fid="f0" style="position: relative;">
+                            <label class="control-label sr-only" for="f0" style="display: block;">Submit Button</label>
+
+                            <div class="progress" style="display: none; z-index: -1; position: absolute;">
+                                <div class="progress-bar progress-bar-striped active" role="progressbar" style="width:100%">
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-lg" style="z-index: 1;">
+                                Submit
+                            </button>
+
+                        </div><div class="clearfix"></div>
+
+                        <div class="submit">
+                            <p class="error bg-warning" style="display:none;">
+                                Please check the required fields.
+                            </p>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+
+                    </form>
+                </div>
+
+
+
+
+                <!--<form id="personForm" data-sb-form-api-token="API_TOKEN">
                     <div id="profilePicture"><br /></div>
+                    <br />
                     <div class="form-floating mb-3">
                         <input class="form-control" id="name" type="text" placeholder="Name" data-sb-validations="required" />
                         <label for="name">Name</label>
@@ -78,7 +257,7 @@
                     <div class="mb-3">
                         <div class="form-check form-switch">
                             <label class="form-label" for="customFile">Choose your image to upload</label>
-                            <input type="file" class="form-control" id="selectAvatar"/>
+                            <input type="file" class="form-control" id="selectAvatar" />
                         </div>
                     </div>
                     <div class="d-none" id="submitSuccessMessage">
@@ -90,9 +269,9 @@
                         <div class="text-center text-danger mb-3">Error sending message!</div>
                     </div>
                     <div class="d-grid">
-                        <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Submit</button>
+                        <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Send</button>
                     </div>
-                </form>
+                </form>-->
             </div>
         </div>
     </section>
@@ -100,7 +279,27 @@
     <div class="copyright py-4 text-center text-white">
         <div class="container"><small>Copyright &copy; Audriaus Website 2023</small></div>
     </div>
-    <script defer src="js/edit.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="js/edit.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/additional-methods.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js"></script>
+    <script src="vendor.js"></script>
+
+    <script src="jqueryform.com.min.js?ver=v3.1&id=jqueryform-075313"></script>
+
+
+
+
+    <script type="text/javascript">
+
+        JF.init('#' + $('.jf-form > form:first-child').attr('id'));
+
+    </script>
 </body>
 </html>

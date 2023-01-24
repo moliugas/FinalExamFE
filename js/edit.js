@@ -1,5 +1,6 @@
 window.addEventListener('DOMContentLoaded', event => {
-    if (localStorage.getItem('token') == null) { location.assign("index.html") }
+    const token = JSON.parse(localStorage.getItem('token'));
+    if (token == null) { location.assign("index.html"); }
 
     // Navbar shrink function
     var navbarShrink = function () {
@@ -25,7 +26,7 @@ window.addEventListener('DOMContentLoaded', event => {
     if (mainNav) {
         new bootstrap.ScrollSpy(document.body, {
             target: '#mainNav',
-            offset: 72,
+            offset: 72
         });
     }
 
@@ -42,12 +43,11 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
-    const token = JSON.parse(localStorage.getItem('token'));
-
-
     const { elements } = document.querySelector('#personForm');
+    console.log(elements);
 
     const fillForm = (data) => {
+        console.log(data);
         for (const [key, value] of Object.entries(data)) {
             const field = elements.namedItem(key);
             if (key == "profilePicture") {
@@ -60,7 +60,7 @@ window.addEventListener('DOMContentLoaded', event => {
             }
             field && (field.value = value);
         }
-    }
+    };
 
     const doAjax = async () => {
         const response = await fetch("https://localhost:7246/Person");
@@ -85,8 +85,6 @@ window.addEventListener('DOMContentLoaded', event => {
 
     const isAdmin = () => token.role == 1;
 
-    doAjax();
-
     const select = document.querySelector("#id-select");
     const formPerson = document.querySelector("#personForm");
 
@@ -100,24 +98,6 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     };
 
-    select.addEventListener("change", (e) => {
-        redoAjax(select.selectedIndex);
-    });
-
-    formPerson.addEventListener("submit", (e) => {
-        e.preventDefault();
-        let body = {
-            id: token.person.id,
-            Name: elements[0].value,
-            Lastname: elements[4].value,
-            PersonalCode: elements[1].value,
-            PhoneNumber: elements[2].value,
-            Email: elements[3].value
-        };
-        console.log(body);
-        name(body);
-    });
-
     const getUserPersonIndex = (items) =>
         items.findIndex(item => item.id == token?.person?.id);
 
@@ -129,15 +109,9 @@ window.addEventListener('DOMContentLoaded', event => {
         newImage.src = src;
         newImage.width = newImage.height = "200";
         document.querySelector('#profilePicture').innerHTML = newImage.outerHTML;
-    }
+    };
 
-    document.querySelector("#logout").addEventListener("click", () => {
-        localStorage.removeItem('token');
-        fetch("https://localhost:7246/User/logout");
-        location.assign("index.html");
-    });
-
-    const name = (body) =>
+    const send = (body) =>
         fetch("https://localhost:7246/Person/update", {
             method: "POST",
             body: JSON.stringify(body),
@@ -152,6 +126,7 @@ window.addEventListener('DOMContentLoaded', event => {
                 alert("Something went wrong, try again.");
             }
         });
+
 
     const surname = (value) =>
         fetch("https://localhost:7246/Person/Surname", {
@@ -174,4 +149,41 @@ window.addEventListener('DOMContentLoaded', event => {
             value: value,
         });
 
+
+    formPerson.addEventListener("submit", (e) => {
+
+        if (document.querySelector("p.error.bg-warning").style.display != 'none') {
+            return;
+        }
+
+        let body = {
+            id: token.person.id,
+            Name: elements[2].value,
+            Lastname: elements[3].value,
+            PersonalCode: elements[4].value,
+            PhoneNumber: elements[5].value,
+            Email: elements[6].value,
+            Avatar: elements[9].value,
+            Address: elements[10].value,
+            City: elements[11].value,
+            Buiding: elements[12].value,
+            Apartment: elements[13].value
+        };
+
+        send(body);
+    });
+
+    doAjax();
+
+    select.addEventListener("change", (e) => {
+        redoAjax(select.selectedIndex);
+    });
+
+    function customSubmit(a) { console.log(a) }
+
+    document.querySelector("#logout").addEventListener("click", () => {
+        localStorage.removeItem('token');
+        fetch("https://localhost:7246/User/logout");
+        location.assign("index.html");
+    });
 });
